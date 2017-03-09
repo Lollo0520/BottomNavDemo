@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        icon="@drawable/ic_business"
+        id="@+id/tab_business"
+        title="Business" />
+    <tab
+        icon="@drawable/ic_book"
+        id="@+id/tab_book"
+        title="Book" />
+    <tab
+        icon="@drawable/ic_music"
+        id="@+id/tab_music"
+        title="Music" />
+</tabs>
