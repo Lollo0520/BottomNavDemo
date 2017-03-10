@@ -1,5 +1,6 @@
 package com.example.seele.bottomnavdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
@@ -7,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.roughike.bottombar.BottomBar;
@@ -78,8 +81,25 @@ public class MainActivity extends AppCompatActivity {
         }, true);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.settings:
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void displayFragment(FragmentManager fm, Fragment fragToShow, String fragTag, Fragment fragToHide1, Fragment fragToHide2) {
-        FragmentTransaction ft = fm.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
+        FragmentTransaction ft = fm.beginTransaction();
         if (fragToShow.isAdded()){
             ft.show(fragToShow);
         }else {
